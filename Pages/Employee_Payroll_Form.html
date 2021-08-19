@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width , initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link rel="stylesheet" href="../StyleSheets/FormCSS.css">
     <title>Employee Payroll Form</title>
 </head>
@@ -21,36 +22,77 @@
     </div>
     <div class="form-content">
         <form>
-                <header class="form-head">Employee Payroll Form</header>
-                <div class="row-content">
-                    <label for="name" class="label text">Name</label>
-                    <input type="text" id="name" class="input" placeholder="Your name..">
+            <header class="form-head">Employee Payroll Form</header>
+            <div class="row-content">
+                <label for="name" class="label text">Name</label>
+                <input type="text" id="name" class="input" placeholder="Your name..">
+            </div>
+
+
+            <div class="row-content">
+                <label class="label text">Profile</label>
+                <div class="profile-radio-content">
+                    <label>
+                        <input type="radio" id="profile1" name="profile" class="radio" value="../Assets/profile-images/Ellipse-7.png"
+                            required>
+                        <img src="../Assets/profile-images/Ellipse -7.png" id="image1" alt="Image 1" class="profile">
+                    </label>
+                    <label>
+                        <input type="radio" id="profile1" name="profile" class="radio" value="../Assets/profile-images/Ellipse 1.png"
+                            required>
+                        <img src="../Assets/profile-images/Ellipse 1.png" id="image2" alt="Image 2" class="profile">
+                    </label>
+                    <label>
+                        <input type="radio" id="profile1" name="profile" class="radio" value="../Assets/profile-images/Ellipse-3.png"
+                            required>
+                        <img src="../Assets/profile-images/Ellipse -3.png" id="image3" alt="Image 3" class="profile">
+                    </label>
+                    <label>
+                        <input type="radio" id="profile1" name="profile" class="radio" value="../Assets/profile-images/Ellipse-5.png"
+                            required>
+                        <img src="../Assets/profile-images/Ellipse -5.png" id="image4" alt="Image 4" class="profile">
+                    </label>
                 </div>
+            </div>
 
+            <div class="row-content">
+                <label class="label text ">Gender</label>
+                <div class="right-space">
+                    <input type="radio" id="male" class="radio" name="male" value="male">
+                    <label for="male" class="text">Male</label>
+                </div>
+                <div class="right-space">
+                    <input type="radio" id="female" class="radio" name="female" value="female">
+                    <label for="female" class="text">Female</label>
+                </div>
+            </div>
 
-    <div class="row-content">
-        <label class="label text">Profile</label>
-        <div class="profile-radio-content">
-            <label>
-                <input type="radio" id="profile1" name="profile" value="../Assets/profile-images/Ellipse-7.png" required>
-                <img src="../Assets/profile-images/Ellipse -7.png" id="image1" alt="Image 1" class="profile">
-            </label>
-            <label>
-                <input type="radio" id="profile1" name="profile" value="../Assets/profile-images/Ellipse 1.png" required>
-                <img src="../Assets/profile-images/Ellipse 1.png" id="image2" alt="Image 2" class="profile">
-            </label>
-            <label>
-                <input type="radio" id="profile1" name="profile" value="../Assets/profile-images/Ellipse-3.png" required>
-                <img src="../Assets/profile-images/Ellipse -3.png" id="image3" alt="Image 3" class="profile">
-            </label>
-            <label>
-                <input type="radio" id="profile1" name="profile" value="../Assets/profile-images/Ellipse-5.png" required>
-                <img src="../Assets/profile-images/Ellipse -5.png" id="image4" alt="Image 4" class="profile">
-            </label>
-        </div>
+            <div class="row-content">
+                <label class="label text ">Department</label>
+                <div>
+                    <input type="checkbox" id="HR" value="HR" class="checkbox">
+                    <label for="HR" class="text right-space">HR</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Sales" value="Sales" class="checkbox">
+                    <label for="Sales" class="text right-space">Sales</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Finance" value="Finance" class="checkbox">
+                    <label for="Finance" class="text right-space">Finance</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Engineer" value="Engineer" class="checkbox">
+                    <label for="Engineer" class="text right-space">Engineer</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="Others" value="Others" class="checkbox">
+                    <label for="Others" class="text right-space">Others</label>
+                </div>
+            </div>
+
+        </form>
     </div>
-
-</form>
-</div>
 </body>
+
 </html>
