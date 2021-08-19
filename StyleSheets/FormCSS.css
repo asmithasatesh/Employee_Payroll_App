@@ -1,0 +1,35 @@
+.header-content
+{
+    display: flex;
+    flex-flow: row wrap;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+.header-text
+{
+    display: flex;
+    flex-direction: column;
+    font: normal normal bold 20px/25px Montserrat;
+    text-transform: uppercase;
+    margin-left: 1%;
+
+}
+.header-text span:nth-child(2)
+{
+    color: #42515F;
+}
+.header-text span:nth-child(1)
+{
+    color: #82A70C;
+}
+.header
+{
+    width: 100%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+}
+body
+{
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+}
