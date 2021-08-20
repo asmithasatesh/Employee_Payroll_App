@@ -266,9 +266,14 @@ label
     {
         margin-top: 20px;
     }
+}
 
-
-
+/* Usecase 7: Apply Ui for buttons*/
+.button:hover
+{
+background-color: #82A70C;
+color: white;
+border: 1px solid #969696;
 }
 
 
