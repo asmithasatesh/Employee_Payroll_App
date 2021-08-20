@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="form-content">
-        <form>
+        <form action="#" onsubmit="save();return false">
             <!-- Usecase 2: Create form head and Name -->
             <header class="form-head">Employee Payroll Form</header>
             <div class="row-content">
@@ -61,11 +61,11 @@
                 <label class="label text ">Gender</label>
                 <div class="gender-div">
                     <div class="right-space">
-                        <input type="radio" id="male" class="radio" name="male" value="male">
+                        <input type="radio" id="male" class="radio" name="gender" value="male">
                         <label for="male" class="text">Male</label>
                     </div>
                     <div class="right-space">
-                        <input type="radio" id="female" class="radio" name="female" value="female">
+                        <input type="radio" id="female" class="radio" name="gender" value="female">
                         <label for="female" class="text">Female</label>
                     </div>
                 </div>
@@ -178,11 +178,12 @@
             <div class="buttonparent">
                 <a href="./Employee_payroll_home.html" class="resetButton button cancelButton">Cancel</a>
                 <div class="submit-reset">
-                    <button type="submit" class="button submitButton">Submit</button>
+                    <button type="submit" class="button submitButton" onclick="onSubmit()">Submit</button>
                     <button type="reset" class="button">Reset</button>
                 </div>
             </div>
             <script src="../JS/Payroll_register_form_validation.js"></script>
+            <script src="../JS/EmployeePayroll.js"></script>
         </form>
     </div>
 
