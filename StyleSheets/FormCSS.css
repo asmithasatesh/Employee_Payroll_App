@@ -1,3 +1,4 @@
+/* Usecase 1: Create header */
 .header-content
 {
     display: flex;
@@ -34,6 +35,8 @@ body
 {
     background: #F7F7F7 0% 0% no-repeat padding-box;
 }
+
+/* Usecase 2: Create form */
 .form-content
 {
     min-height: calc(100%-88px);
@@ -90,6 +93,8 @@ label
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+/* Usecase 3: Add profile using radio button*/
 .profile-radio-content
 {
     display: flex;
