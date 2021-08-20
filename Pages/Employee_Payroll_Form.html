@@ -12,9 +12,9 @@
 
 <body>
     <!-- Usecase 1: Create header -->
-    <div class="header">
-        <div class="header-content">
-            <img src="../Assets/images/logo.png" alt="" width="16%" height="16%">
+    <div class="header header-content">
+        <div class="logo-content">
+            <img src="../Assets/images/logo.png" alt="" width="40px" height="40px">
             <div class="header-text">
                 <span>Employee</span>
                 <span>Payroll</span>
@@ -57,39 +57,44 @@
                 </div>
             </div>
             <!-- Usecase 4: Add Gender , department and Salary -->
-            <div class="row-content">
+            <div class="row-content gender">
                 <label class="label text ">Gender</label>
-                <div class="right-space">
-                    <input type="radio" id="male" class="radio" name="male" value="male">
-                    <label for="male" class="text">Male</label>
+                <div class="gender-div">
+                    <div class="right-space">
+                        <input type="radio" id="male" class="radio" name="male" value="male">
+                        <label for="male" class="text">Male</label>
+                    </div>
+                    <div class="right-space">
+                        <input type="radio" id="female" class="radio" name="female" value="female">
+                        <label for="female" class="text">Female</label>
+                    </div>
                 </div>
-                <div class="right-space">
-                    <input type="radio" id="female" class="radio" name="female" value="female">
-                    <label for="female" class="text">Female</label>
-                </div>
+               
             </div>
 
             <div class="row-content">
                 <label class="label text ">Department</label>
-                <div>
-                    <input type="checkbox" id="HR" value="HR">
-                    <label for="HR" class="text right-space">HR</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="Sales" value="Sales">
-                    <label for="Sales" class="text right-space">Sales</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="Finance" value="Finance">
-                    <label for="Finance" class="text right-space">Finance</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="Engineer" value="Engineer">
-                    <label for="Engineer" class="text right-space">Engineer</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="Others" value="Others">
-                    <label for="Others" class="text right-space">Others</label>
+                <div class="checkbox row-content">
+                    <div>
+                        <input type="checkbox" id="HR" value="HR">
+                        <label for="HR" class="text right-space">HR</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Sales" value="Sales">
+                        <label for="Sales" class="text right-space">Sales</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Finance" value="Finance">
+                        <label for="Finance" class="text right-space">Finance</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Engineer" value="Engineer">
+                        <label for="Engineer" class="text right-space">Engineer</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Others" value="Others">
+                        <label for="Others" class="text right-space">Others</label>
+                    </div>
                 </div>
             </div>
 

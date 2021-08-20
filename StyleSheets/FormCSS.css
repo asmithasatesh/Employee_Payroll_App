@@ -8,6 +8,7 @@
     align-items: center;
     padding: 15px;
 }
+
 .header-text
 {
     display: flex;
@@ -27,13 +28,20 @@
 }
 .header
 {
-    width: 100%;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    margin-bottom: 20px;
+    background: #FFFFFF;
+    padding: 15px 0;
 }
 body
 {
-    background: #F7F7F7 0% 0% no-repeat padding-box;
+    margin: 0;
+    height: 100%;
+}
+.logo-content
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
 }
 
 /* Usecase 2: Create form */
@@ -116,7 +124,13 @@ label
 {
     padding-right: 9px;
     margin-right: 18px;
-
+    display: flex;
+    align-items: center;
+}
+.gender-div
+{
+    display: flex;
+    align-items: center;
 }
 .text
 {
@@ -124,7 +138,7 @@ label
     color: #42515f;
     font-family: Roboto;
 }
-.row-content > div > input[type="checkbox"]
+.checkbox > div > input[type="checkbox"]
 {
     width: 15px;
     height: 15px;
@@ -147,6 +161,7 @@ label
     font-size: 20px;
     font-family: Roboto;
     color: #42515f;
+    border-radius: 5px;
     font-weight: 400;
     min-width: 140px;
     padding:7px 7px;
@@ -160,4 +175,100 @@ label
     text-decoration: none;
     text-align: center;
 }
+
+.checkbox > div 
+{
+    display: flex;
+    align-items: center;
+}
+
+/* Usecase 6: Refactor-Add media queries */
+@media only screen and (max-width:320px)
+{
+    .form
+    {
+        margin-top: 10px 0px 0px 0px;
+        padding: 0px;
+    }
+    .buttonparent
+    {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+}
+@media only screen and (max-width:718px)
+{
+    .profile-radio-content
+    {
+        flex-flow: wrap;
+    }
+}
+@media only screen and (max-width:843px)
+{
+    .checkbox
+    {
+        flex-flow: wrap;
+    }
+    select{
+        margin-top: 5px;
+    }
+    .buttonparent
+    {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    .submit-reset
+    {
+        width: 100%;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .submitButton
+    {
+        margin: 0;
+    }
+    .cancelButton
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+}
+@media only screen and (max-width:440px)
+{
+    .gender-div
+    {
+        flex-flow: wrap;
+    }
+    .submit-reset
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+
+    }
+    .buttonparent > div > button
+    {
+        margin-bottom: 10px;
+    }
+
+    form{
+        width: 100%;
+        padding: 0px 0px 0px 10px;
+    }
+    .form-head
+    {
+        margin-top: 20px;
+    }
+
+
+
+}
+
 
