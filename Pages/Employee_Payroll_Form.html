@@ -56,7 +56,7 @@
                     </label>
                 </div>
             </div>
-           <!-- Usecase 4: Add Gender , department and Salary -->
+            <!-- Usecase 4: Add Gender , department and Salary -->
             <div class="row-content">
                 <label class="label text ">Gender</label>
                 <div class="right-space">
@@ -99,12 +99,12 @@
                 <output class="salary-output text" for="salary">400000</output>
             </div>
 
-            <!-- start date with Day, Month and Year as Select Input Item-->
+            <!-- Usecase 5: start date with Day, Month and Year as Select Input Item-->
             <div class="row-content">
-                <label class = "label text">Start Date</label>
+                <label class="label text">Start Date</label>
                 <div>
                     <select name="Day" id="day" class="text">
-                        <option class="option">Day</option>
+                        <option>Day</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -137,8 +137,8 @@
                         <option value="30">30</option>
                         <option value="31">31</option>
                     </select>
-                    <select id="month" name="Month" class="text" >
-                        <option >Month</option>
+                    <select id="month" name="Month" class="text">
+                        <option>Month</option>
                         <option value="Jan">January</option>
                         <option value="Feb">Febuary</option>
                         <option value="March">March</option>
@@ -162,6 +162,20 @@
                         <option value="2015">2015</option>
                     </select>
                 </div>
+            </div>
+
+            <!-- Usecase 6: Add notes submit, cancel and reset button -->
+            <div class="row-content">
+                <label class="label text" for="notes">Notes</label>
+                <textarea name="Notes" class="input" id="notes" style="height: 100px"></textarea>
+              </div>
+              <div class="buttonparent">
+                <a href="./Employee_payroll_home.html" class="resetButton button cancelButton">Cancel</a>
+                <div class="submit-reset">
+                  <button type="submit" class="button submitButton">Submit</button>
+                  <button type="reset" class="button">Reset</button>
+                </div>
+              </div>
 
         </form>
     </div>
