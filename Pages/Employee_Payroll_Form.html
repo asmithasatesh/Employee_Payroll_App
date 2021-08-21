@@ -22,12 +22,13 @@
         </div>
     </div>
     <div class="form-content">
-        <form action="#" onsubmit="save();return false">
+        <form action="#" onsubmit="save()">
             <!-- Usecase 2: Create form head and Name -->
             <header class="form-head">Employee Payroll Form</header>
             <div class="row-content">
                 <label for="name" class="label text">Name</label>
                 <input type="text" id="name" class="input" placeholder="Your name..">
+                <validate class="text-error" for="name"></validate>
             </div>
 
             <!-- Usecase 3: Add profile using radio button -->
@@ -76,23 +77,23 @@
                 <label class="label text ">Department</label>
                 <div class="checkbox row-content">
                     <div>
-                        <input type="checkbox" id="HR" value="HR">
+                        <input type="checkbox" id="HR" value="HR" name="department">
                         <label for="HR" class="text right-space">HR</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="Sales" value="Sales">
+                        <input type="checkbox" id="Sales" value="Sales" name="department">
                         <label for="Sales" class="text right-space">Sales</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="Finance" value="Finance">
+                        <input type="checkbox" id="Finance" value="Finance" name="department">
                         <label for="Finance" class="text right-space">Finance</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="Engineer" value="Engineer">
+                        <input type="checkbox" id="Engineer" value="Engineer" name="department">
                         <label for="Engineer" class="text right-space">Engineer</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="Others" value="Others">
+                        <input type="checkbox" id="Others" value="Others" name="department">
                         <label for="Others" class="text right-space">Others</label>
                     </div>
                 </div>
@@ -110,7 +111,7 @@
                 <div id="date">
                     <select name="Day" id="day" class="text">
                         <option>Day</option>
-                        <option value="1">1</option>
+                        <option value="One">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
@@ -159,7 +160,7 @@
                     </select>
                     <select id="year" name="Year" class="text">
                         <option>Year</option>
-                        <option value="2020">2021</option>
+                        <option value="2021">2021</option>
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
                         <option value="2018">2018</option>
@@ -168,6 +169,7 @@
                         <option value="2015">2015</option>
                     </select>
                 </div>
+                <validate class="dateerror"></validate>
             </div>
 
             <!-- Usecase 6: Add notes submit, cancel and reset button -->
@@ -178,7 +180,7 @@
             <div class="buttonparent">
                 <a href="./Employee_payroll_home.html" class="resetButton button cancelButton">Cancel</a>
                 <div class="submit-reset">
-                    <button type="submit" class="button submitButton" onclick="onSubmit()">Submit</button>
+                    <button type="submit" class="button submitButton" onclick="onSubmit()" >Submit</button>
                     <button type="reset" class="button">Reset</button>
                 </div>
             </div>
@@ -188,5 +190,4 @@
     </div>
 
 </body>
-
 </html>

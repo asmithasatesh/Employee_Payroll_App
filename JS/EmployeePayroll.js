@@ -61,41 +61,19 @@ class EmployeePayrollData
     }
     set startDate(startDate)
     {
+        let now=new Date();
+        if(startDate>now) throw "Start date is a future date";
+        var diff=Math.abs( now.getTime() - startDate.getTime());
+        if(diff/(1000*60*60*24)>30) throw "Start date is beyond 30 days";
         this._startDate=startDate;
     }
+
     toString(){
         const option = {year:'numeric', month:'long', day:'numeric'};
-        return "Employee name = "+this.name+" || Gender: "+this.gender+" || Profile Pic: "+this.profilePic+" || Salary: "+this.salary+
-        " || Start Date: "+this.startDate;
+        const empDate=!this.startDate?"undefined":this.startDate.toLocaleDateString("en-US",option);
+        return "Employee name : "+this.name+" || Department: "+this.department+" || Gender: "+this.gender+" || Profile Pic: "+this.profilePic+" || Salary: "+this.salary+
+        " || Start Date: "+empDate+" || Notes: "+this.notes;
     }
 }
 
-const onSubmit=()=>{
-    let employee = new EmployeePayrollData();
-    try
-    {
-    employee.name= document.getElementById("name").value;
-    employee.profilePic=getSelectedValues('[name = profile]');
-    employee.salary = document.getElementById("salary").value;
-    employee.gender=getSelectedValues('[name = gender]').pop();
-    employee.startDate=document.getElementById("day").value+" "+document.getElementById("month").value+" "+document.getElementById("year").value;
-    alert(employee.toString());
-    }
-    catch(e){
-        alert(e);
-        console.log(employee.Empname);
-    }
-   
-};
 
-const getSelectedValues = (propertyvalue)=>{
-    
-    let allitems = document.querySelectorAll(propertyvalue);
-    let selectedItem = [];
-    allitems.forEach(item=>{
-
-        if(item.checked)
-        selectedItem.push(item.value);
-    });
-    return selectedItem;
-}
