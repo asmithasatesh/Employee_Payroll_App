@@ -94,10 +94,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
        employeePayrollData.startDate=new Date(Date.parse(date));
        setTextValue(".dateerror","");
      }
-     catch
+     catch(e)
      {
        setTextValue(".dateerror",e);
-       throw e;
      }
      
      alert(employeePayrollData.toString());
@@ -128,5 +127,32 @@ window.addEventListener("DOMContentLoaded", (event) => {
     {
     const element=document.querySelector(id);
     element.textContent=value;
+    }
+
+    const resetForm=() =>
+    {
+    setValue('#name','');
+    unsetSelectedValues('[name=profile]');
+    unsetSelectedValues('[name=gender]');
+    unsetSelectedValues('[name=department]');
+    setValue('#salary','');
+    setTextValue('.salary-output','400000');
+    setValue('#notes','');
+    setValue('#day','1');
+    setValue('#month','January');
+    setValue('#year','2021');
+    alert("Reseting Form!");
+    }
+
+    const setValue=(id,value)=>{
+    const element = document.querySelector(id);
+    element.value=value;
+    }
+
+    const unsetSelectedValues=(property)=>{
+    let allItems = document.querySelectorAll(property);
+    allItems.forEach(item=>{
+    item.checked=false;
+    });
     }
 
