@@ -87,7 +87,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
      employeePayrollData.department=getSelectedValues('[name=department]');
      employeePayrollData.salary=getInputValueById("#salary");
      employeePayrollData.notes=getInputValueById("#notes");
-     let date=getInputValueById("#day")+ " "+getInputValueById("#month") + " "+getInputValueById("#year");
+     let date=getInputValueById("#day")+ " "+getInputValueById("#month") +" "+getInputValueById("#year");
 
      try
      {
