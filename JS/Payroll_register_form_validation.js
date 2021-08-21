@@ -38,6 +38,20 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
     })
    });
+
+   const save=()=>
+   {
+     try
+     {
+        // Usecase 11: Create employee Payroll object on Submit
+       let employeePayrollData=onSubmit();
+     }
+     catch(e)
+     {
+       return;
+     }
+   }
+   //Usecase 10: Validate Name and Date
    const onSubmit=() =>
    {
      let employeePayrollData=new EmployeePayrollData();
@@ -50,12 +64,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
        setTextValue(".text-error",e);
        throw e;
      }
+
      employeePayrollData.profilePic=getSelectedValues('[name=profile]').pop();
      employeePayrollData.gender=getSelectedValues('[name=gender]').pop();
      employeePayrollData.department=getSelectedValues('[name=department]');
      employeePayrollData.salary=getInputValueById("#salary");
      employeePayrollData.notes=getInputValueById("#notes");
      let date=getInputValueById("#day")+ " "+getInputValueById("#month") + " "+getInputValueById("#year");
+
      try
      {
        employeePayrollData.startDate=new Date(Date.parse(date));
@@ -71,6 +87,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
      return employeePayrollData;
    }
    
+
    const getInputValueById=(id) =>
    {
      let value=document.querySelector(id).value;
