@@ -45,12 +45,29 @@ window.addEventListener("DOMContentLoaded", (event) => {
      {
         // Usecase 11: Create employee Payroll object on Submit
        let employeePayrollData=onSubmit();
+       createAndUpdateStorage(employeePayrollData);
      }
      catch(e)
      {
        return;
      }
    }
+
+   //Usecase 12: Storing employee payroll object in local storage
+    function createAndUpdateStorage(employeePayrollData)
+    {
+    let employeePayrollList=JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    if(employeePayrollList!=undefined)
+    {
+        employeePayrollList.push(employeePayrollData);
+    }
+    else{
+        employeePayrollList=[employeePayrollData];
+    }
+    alert(employeePayrollList.toString());
+    localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
+    }
+
    //Usecase 10: Validate Name and Date
    const onSubmit=() =>
    {
