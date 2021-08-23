@@ -1,7 +1,11 @@
-
+var employeeList
 window.addEventListener('DOMContentLoaded', (event) =>
 {
-  JsonObjectFunction();
+  //Usecase 6: Ability to view Employee Payroll details from Local Storage.
+    employeeList=getEmployeePayrollFromLocalStorage();
+    document.querySelector(".emp-count").textContent = employeeList.length;
+    InjectFRomLOcalStorage();
+
 });
 
 //Usecase 4: Ability to view Employee Payroll details in a Tabular Format from JS File using Template Literals.
@@ -105,4 +109,39 @@ const getDeptHtml=(deptList) =>
       deptHtml=`${deptHtml}<div class="dept-label" >${dept}</div>`
   }
   return deptHtml;
+}
+
+//Usecase 6: Ability to view Employee Payroll details from Local Storage.
+InjectFRomLOcalStorage = () => {
+  const headerHtml = "<th></th><th>Name</th><th>Gender</th><th>Department</th><th>Salary</th><th>Start Date</th><th>Actions</th>";
+  let innerHtml = `${headerHtml}`;
+  if(employeeList.length == 0) return;
+  for (let i=0;i< employeeList.length;i++)
+  {
+innerHtml=`${innerHtml}
+<tr>
+  <td>
+      <img class="profile" alt="" src="${employeeList[i]._profilePic}">
+  </td>
+  <td>${employeeList[i]._name}</td>
+  <td>${employeeList[i]._gender}</td>
+  <td>
+   ${getDeptHtml(employeeList[i]._department)}
+  </td>
+  <td>${employeeList[i]._salary}</td>
+  <td>${employeeList[i]._startDate}</td>
+  <td>
+      <img id="${employeeList[i]._name}" src="../assets/icons/delete-black-18dp.svg" alt="delete" id="icon"/>
+      <img id="${employeeList[i]._name}" src="../assets/icons/create-black-18dp.svg" alt="create" id="icon"/>
+  </td>
+</tr>
+  `;
+  }
+    
+  document.querySelector('#display-table').innerHTML = innerHtml;
+}
+//Usecase 6: Get data from Local Storage
+const getEmployeePayrollFromLocalStorage=()=>
+{
+    return localStorage.getItem("EmployeePayrollList") ? JSON.parse(localStorage.getItem("EmployeePayrollList")) : [];
 }
