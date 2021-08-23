@@ -24,7 +24,7 @@ href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600
             <span>Payroll</span>
         </div>
     </div>
-    <!-- Usecase 1: Create header -->
+    <!-- Usecase 2: Ability to create a Header Section with Employee Details and Add Employee button -->
     <div class="main-content">
         <div class="inner-header-content">
             <div class="emp-detail-text">Employee Details <div class="emp-count"></div>
@@ -35,6 +35,47 @@ href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600
             </a>
         </div>
     </div>
+
+    <!--Usecase 3: Ability to view Employee Payroll details in a Tabular Format.-->
+    <div class="table-main">
+        <table class="table" id = "display-table">
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Department</th>
+          <th>Salary</th>
+          <th>Start Date</th>
+          <th>Actions</th>
+        </tr>
+        <tr>
+          <td><img src="../assets/profile-images/Ellipse -1.png" alt="" class="profile"></td>
+          <td>Lalitha</td>
+          <td>Female</td>
+          <td><div class="dept-label">HR</div>
+            <div class="dept-label">Finance</div></td>
+          <td>400000</td>
+          <td>1 June 2019</td>
+          <td>
+            <img src="../assets/icons/delete-black-18dp.svg" alt="delete" id="icon">
+            <img src="../assets/icons/create-black-18dp.svg" alt="create" id="icon">  
+          </td>
+        </tr>
+        <tr>
+            <td><img src="../assets/profile-images/Ellipse -2.png" alt="" class="profile"></td>
+            <td>Rakesh</td>
+            <td>Male</td>
+            <td><div class="dept-label">Sales</div>
+              <div class="dept-label">Finance</div></td>
+            <td>450000</td>
+            <td>28 June 2020</td>
+            <td>
+              <img src="../assets/icons/delete-black-18dp.svg" alt="delete" id="icon">
+              <img src="../assets/icons/create-black-18dp.svg" alt="create" id="icon">  
+            </td>
+          </tr>
+      </table>
+      </div>
 
 
 </body>
