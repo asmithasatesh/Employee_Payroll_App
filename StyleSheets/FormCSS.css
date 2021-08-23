@@ -1,11 +1,11 @@
 /* Usecase 1: Create header */
-.header-content
+.logo-content
 {
     display: flex;
-    flex-flow: row wrap;
-    width: 20%;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
+    width: 20%;
+    margin-left: 1%;
     padding: 15px;
 }
 
@@ -26,23 +26,12 @@
 {
     color: #82A70C;
 }
-.header
-{
-    background: #FFFFFF;
-    padding: 15px 0;
-}
+
 body
 {
     margin: 0;
-    height: 100%;
 }
-.logo-content
-{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 80%;
-}
+
 
 /* Usecase 2: Create form */
 .form-content
@@ -85,7 +74,6 @@ form{
 label
 {
     padding: 12px 12px 12px 0;
-    display: inline-block;
 }
 
 .header-text{
@@ -116,7 +104,6 @@ label
 .profile
 {
     width: 40px;
-    border-radius: 50%;
     margin-left: 10px;
     margin-right: 15px;
 }
