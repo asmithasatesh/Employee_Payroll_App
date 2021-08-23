@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const texterror=document.querySelector('.text-error');
     text.addEventListener('input',function()
     {
-    let nameRegex=RegExp('^[A-Z]{1}[a-z]{2,}$');
+    let nameRegex=RegExp('^[A-Z]{1}[a-z]{2,}([\\s]?[A-Za-z]{1,})*$');
     if(nameRegex.test(text.value))
     {
         texterror.textContent="";

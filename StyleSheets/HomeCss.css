@@ -35,7 +35,6 @@ body
 .main-content{
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh-80px);
     background-color: #f7f7f7;
     padding: 30px 0 10px;
     box-sizing: border-box;
@@ -139,7 +138,8 @@ td img{
     background-color: #e9fea5;;
     border-radius: 13px;
     width: fit-content;
-    padding:1px 7px;
+    margin-right: 5pX;
+    padding:1px 10px;
     text-align: center;
     font-size: 14px;
     display: inline-block;
