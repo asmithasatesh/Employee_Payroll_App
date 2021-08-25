@@ -133,8 +133,8 @@ innerHtml=`${innerHtml}
   <td>${employeeList[i]._salary}</td>
   <td>${stringifyDate(employeeList[i]._startDate)}</td>
   <td>
-      <img id="${employeeList[i]._name}" src="../assets/icons/delete-black-18dp.svg" onclick="remove(this)" alt="delete" id="icon"/>
-      <img id="${employeeList[i]._name}" src="../assets/icons/create-black-18dp.svg" onclick="edit(this) "alt="create" id="icon"/>
+      <img id="${employeeList[i]._id}" src="../assets/icons/delete-black-18dp.svg" onclick="remove(this)" alt="delete" id="icon"/>
+      <img id="${employeeList[i]._id}" src="../assets/icons/create-black-18dp.svg" onclick="edit(this) "alt="create" id="icon"/>
   </td>
 </tr>
   `;
@@ -151,9 +151,9 @@ const getEmployeePayrollFromLocalStorage=()=>
 //Usecase 7: Remove employee from Local Storage
 const remove= (node) =>
 {
-  let employeePayrollData=employeeList.find(empData => empData._name == node.id);
+  let employeePayrollData=employeeList.find(empData => empData._id == node.id);
   if(!employeePayrollData) return ;
-  const index= employeeList.indexOf(empdata => empdata._name == employeePayrollData._name);
+  const index= employeeList.indexOf(empdata => empdata._id == employeePayrollData._id);
   employeeList.splice(index,1);
   localStorage.setItem("EmployeePayrollList",JSON.stringify(employeeList));
   document.querySelector(".emp-count").textContent=employeeList.length;
@@ -163,8 +163,8 @@ const remove= (node) =>
 //Usecase 8: Ability to Update an Employee Payroll details.
 const edit= (node) =>
 {
-  let employeePayrollData=employeeList.find(empData => empData._name == node.id);
-     alert(employeePayrollData.toString());
+  let employeePayrollData=employeeList.find(empData => empData._id== node.id);
+     alert("Redirecting ..");
      localStorage.setItem("editEmp",JSON.stringify(employeePayrollData));  
      window.location.replace(site_properties.add_emp_payroll_page);
 }

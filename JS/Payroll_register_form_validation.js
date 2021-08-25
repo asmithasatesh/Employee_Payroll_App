@@ -160,7 +160,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
     }
 
-    //Usecase 8: Ability to Update an Employee Payroll details.
+    //Usecase 8: HOME Ability to Update an Employee Payroll details.
     const checkForUpdate=() =>
     {
       var empJson=localStorage.getItem('editEmp');
@@ -178,6 +178,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       setSelectedValues('[name=gender]',empJsonObj._gender);
       setSelectedValues('[name=department]',empJsonObj._department);
       setValue('#salary',empJsonObj._salary);
+      setTextValue('.salary-output',empJsonObj._salary);
       setValue('#notes',empJsonObj._notes);
       let date= stringifyDate(empJsonObj._startDate).split(" ");
       setValue('#day',date[0]);
@@ -195,3 +196,114 @@ window.addEventListener("DOMContentLoaded", (event) => {
         else if (item.value === value)item.checked=true;
       });
       }
+
+    //Usecase 9: HOME Ability to Save Updated Employee Payroll into Local Storage.
+      const onsave= (event) =>
+      {
+        try{
+          setEmployeePayrollObject();
+          createAndUpdateStorages();
+          resetForm();
+        }
+        catch(e)
+        {
+          return;
+        }
+      }
+
+      //Storing Data on global Object
+   const setEmployeePayrollObject=() =>
+   {
+    empJsonObj.name=getInputValueById("#name");
+    empJsonObj.profilePic=getSelectedValues('[name=profile]').pop();
+    empJsonObj.gender=getSelectedValues('[name=gender]').pop();
+    empJsonObj.department=getSelectedValues('[name=department]');
+    empJsonObj.salary=getInputValueById("#salary");
+    empJsonObj.notes=getInputValueById("#notes");
+     let date=getInputValueById("#day")+ " "+getInputValueById("#month") +" "+getInputValueById("#year");
+
+     try
+     {
+      empJsonObj.startDate=new Date(Date.parse(date));
+       setTextValue(".dateerror","");
+     }
+     catch(e)
+     {
+       setTextValue(".dateerror",e);
+     }
+     
+     alert(empJsonObj.toString());
+   }
+
+   //For creating and Update values
+   createAndUpdateStorages=() =>
+   {
+    let employeePayrollList=JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    if(employeePayrollList)
+    {
+      let empayrollData= employeePayrollList
+      .find(empData => empData._id == empJsonObj._id);
+      if(!empayrollData)
+      {
+        employeePayrollList.push(createEmployeePayrollData());
+      }
+      else{
+        const index= employeePayrollList.map(empData => empData._id)
+        .indexOf(empayrollData._id);
+        employeePayrollList.splice(index,1,createEmployeePayrollData(empayrollData._id));
+      }
+    }
+    else{
+      employeePayrollList=[createEmployeePayrollData()]
+    }
+    localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
+   }
+
+
+     //Check whether ID exist
+      createEmployeePayrollData=(id) =>
+      {
+        let employeedata= new EmployeePayrollData();
+        if(!id) employeedata._id=createNewID();
+        else employeedata.id=id;
+        setEmployeePayrollData(employeedata);
+        return employeedata;
+      }
+
+      //Create new ID and maintaing current id in Local Storage
+      createNewID=()=>
+      {
+        let empID=localStorage.getItem("CurrentEmployeeID");
+        empID=!empID? 1: (parseInt(empID)+1).toString();
+        localStorage.setItem("CurrentEmployeeID",empID);
+        return empID;
+      }
+
+        //Assigning data from Json Object
+          setEmployeePayrollData=(employeePayrollData) =>
+          {
+        try
+        {
+          employeePayrollData.name=empJsonObj.name;
+        }
+        catch(e)
+        {
+          setTextValue(".text-error",e);
+        }
+
+        employeePayrollData.profilePic=empJsonObj.profilePic;
+        employeePayrollData.gender=empJsonObj.gender;
+        employeePayrollData.department=empJsonObj.department;
+        employeePayrollData.salary=empJsonObj.salary;
+        employeePayrollData.notes=empJsonObj.notes;
+        try
+        {
+          employeePayrollData.startDate=empJsonObj.startDate;
+          setTextValue(".dateerror","");
+        }
+        catch(e)
+        {
+          setTextValue(".dateerror",e);
+        }
+        alert(employeePayrollData.toString());
+          }
