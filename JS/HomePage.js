@@ -131,7 +131,7 @@ innerHtml=`${innerHtml}
   <td>${employeeList[i]._salary}</td>
   <td>${employeeList[i]._startDate}</td>
   <td>
-      <img id="${employeeList[i]._name}" src="../assets/icons/delete-black-18dp.svg" alt="delete" id="icon"/>
+      <img id="${employeeList[i]._name}" src="../assets/icons/delete-black-18dp.svg" onclick="remove(this)" alt="delete" id="icon"/>
       <img id="${employeeList[i]._name}" src="../assets/icons/create-black-18dp.svg" alt="create" id="icon"/>
   </td>
 </tr>
@@ -144,4 +144,17 @@ innerHtml=`${innerHtml}
 const getEmployeePayrollFromLocalStorage=()=>
 {
     return localStorage.getItem("EmployeePayrollList") ? JSON.parse(localStorage.getItem("EmployeePayrollList")) : [];
+}
+
+//Usecase 7: Remove employee from Local Storage
+const remove= (node) =>
+{
+  let employeePayrollData=employeeList.find(empData => empData._name == node.id);
+  if(!employeePayrollData) return ;
+  const index= employeeList.map(empData => empData._name)
+  .indexOf(employeePayrollData._name);
+  employeeList.splice(index,1);
+  localStorage.setItem("EmployeePayrollList",JSON.stringify(employeeList));
+  document.querySelector(".emp-count").textContent=employeeList.length;
+  InjectFRomLOcalStorage();
 }
