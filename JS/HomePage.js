@@ -1,10 +1,12 @@
-var employeeList
+var employeeList;
 window.addEventListener('DOMContentLoaded', (event) =>
 {
   //Usecase 6: Ability to view Employee Payroll details from Local Storage.
     employeeList=getEmployeePayrollFromLocalStorage();
     document.querySelector(".emp-count").textContent = employeeList.length;
     InjectFRomLOcalStorage();
+    //Usecase 8: Ability to Update an Employee Payroll details.
+    localStorage.removeItem('editEmp');
 
 });
 
@@ -129,10 +131,10 @@ innerHtml=`${innerHtml}
    ${getDeptHtml(employeeList[i]._department)}
   </td>
   <td>${employeeList[i]._salary}</td>
-  <td>${employeeList[i]._startDate}</td>
+  <td>${stringifyDate(employeeList[i]._startDate)}</td>
   <td>
       <img id="${employeeList[i]._name}" src="../assets/icons/delete-black-18dp.svg" onclick="remove(this)" alt="delete" id="icon"/>
-      <img id="${employeeList[i]._name}" src="../assets/icons/create-black-18dp.svg" alt="create" id="icon"/>
+      <img id="${employeeList[i]._name}" src="../assets/icons/create-black-18dp.svg" onclick="edit(this) "alt="create" id="icon"/>
   </td>
 </tr>
   `;
@@ -151,10 +153,19 @@ const remove= (node) =>
 {
   let employeePayrollData=employeeList.find(empData => empData._name == node.id);
   if(!employeePayrollData) return ;
-  const index= employeeList.map(empData => empData._name)
-  .indexOf(employeePayrollData._name);
+  const index= employeeList.indexOf(empdata => empdata._name == employeePayrollData._name);
   employeeList.splice(index,1);
   localStorage.setItem("EmployeePayrollList",JSON.stringify(employeeList));
   document.querySelector(".emp-count").textContent=employeeList.length;
   InjectFRomLOcalStorage();
 }
+
+//Usecase 8: Ability to Update an Employee Payroll details.
+const edit= (node) =>
+{
+  let employeePayrollData=employeeList.find(empData => empData._name == node.id);
+     alert(employeePayrollData.toString());
+     localStorage.setItem("editEmp",JSON.stringify(employeePayrollData));  
+     window.location.replace(site_properties.add_emp_payroll_page);
+}
+

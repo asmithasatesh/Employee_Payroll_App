@@ -1,4 +1,7 @@
    //first loads the contents in the web page then validates
+    //HOME Usecase 8: Ability to Update an Employee Payroll details.
+    let isUpdate=false;
+    let empJsonObj={};
 window.addEventListener("DOMContentLoaded", (event) => {
    //Usecase 8: Addevent listener to change salary range
     const salary=document.querySelector('#salary');
@@ -37,6 +40,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             setTextValue(".dateerror",e);
         }
     })
+    checkForUpdate();
    });
 
    const save=()=>
@@ -156,3 +160,38 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
     }
 
+    //Usecase 8: Ability to Update an Employee Payroll details.
+    const checkForUpdate=() =>
+    {
+      var empJson=localStorage.getItem('editEmp');
+      isUpdate=empJson?true: false;
+      if(!isUpdate) return;
+      empJsonObj=JSON.parse(empJson);
+      setForm();
+    }
+
+//Usecase 8: HOME Ability to Update an Employee Payroll details.
+  const setForm= () =>
+    {
+      setValue('#name',empJsonObj._name);
+      setSelectedValues('[name=profile]',empJsonObj._profilePic);
+      setSelectedValues('[name=gender]',empJsonObj._gender);
+      setSelectedValues('[name=department]',empJsonObj._department);
+      setValue('#salary',empJsonObj._salary);
+      setValue('#notes',empJsonObj._notes);
+      let date= stringifyDate(empJsonObj._startDate).split(" ");
+      setValue('#day',date[0]);
+      setValue('#month',date[1]);
+      setValue('#year',date[2]);
+    }
+
+    const setSelectedValues=(property,value)=>{
+      let allItems = document.querySelectorAll(property);
+      allItems.forEach(item=>{
+        if(Array.isArray(value))
+        {
+          if(value.includes(item.value))      item.checked=true;
+        }
+        else if (item.value === value)item.checked=true;
+      });
+      }
