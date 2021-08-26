@@ -2,40 +2,41 @@
   "employee": [
     {
       "name": "Janani Krishnan",
-      "gender": "Female",
+      "gender": "female",
       "department": [
-        "HR","Sales"
+        "HR",
+        "Sales"
       ],
-      "salary": "400000",
-      "startDate": "1 Jan 2020",
-      "notes": "",
-      "id": 1604589551457,
+      "salary": "500000",
+      "startDate": "2019-12-31T18:30:00.000Z",
+      "notes": "hi",
+      "id": "1",
       "profilePic": "../assets/profile-images/Ellipse -7.png"
     },
     {
       "name": "Harsha Vargheese",
-      "gender": "Female",
+      "gender": "female",
       "department": [
-        "HR"
+        "HR",
+        "Engineer"
       ],
-      "salary": "30000",
-      "startDate": "12 Aug 2020",
-      "notes": "",
-      "id": 1604589594363,
+      "salary": "307400",
+      "startDate": "2020-08-11T18:30:00.000Z",
+      "notes": "you",
+      "id": "2",
       "profilePic": "../assets/profile-images/Ellipse 1.png"
     },
     {
       "name": "Mohit Singh",
-      "gender": "Male",
+      "gender": "male",
       "department": [
-        "Engineering"
+        "Engineer"
       ],
-      "salary": "30000",
-      "startDate": "1 Jan 2020",
-      "notes": "",
-      "id": 1604589699566,
-      "profilePic": "../assets/profile-images/Ellipse -9.png"
+      "salary": "300000",
+      "startDate": "2019-12-31T18:30:00.000Z",
+      "notes": "there",
+      "id": "3",
+      "profilePic": "../assets/profile-images/Ellipse -5.png"
     }
-
   ]
 }

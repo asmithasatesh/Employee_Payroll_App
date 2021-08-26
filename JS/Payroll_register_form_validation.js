@@ -151,7 +151,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     setValue('#day','1');
     setValue('#month','January');
     setValue('#year','2021');
-    alert("Reseting Form!");
     }
 
     const setValue=(id,value)=>{
@@ -210,7 +209,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
         event.stopPropagation();
         try{
           setEmployeePayrollObject();
+          if(site_properties.use_local_storage.match("true"))
+          {
           createAndUpdateStorages();
+          }
+          else
+          {
+            createorUpdateJsonServer();
+          }
           resetForm();
           window.location.replace(site_properties.home_page);
         }
@@ -220,6 +226,21 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
       }
 
+    //Usecase 25: Create or Update the json server
+    const createorUpdateJsonServer=()=>{
+      let postUrl = site_properties.server_url;
+      let methodType = "POST";
+      if(isUpdate){
+        methodType = "PUT";
+        postUrl = postUrl+empJsonObj.id.toString();
+      }
+      makePromiseCall(methodType,postUrl,true,empJsonObj).then
+      (responseText=>{
+
+      }).catch(error=>{
+        throw error;
+      })
+    }
     //Storing Data on global Object
    const setEmployeePayrollObject=() =>
    {
@@ -315,3 +336,5 @@ window.addEventListener("DOMContentLoaded", (event) => {
       }
       alert(employeePayrollData.toString());
     }
+
+
