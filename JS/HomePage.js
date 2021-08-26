@@ -58,16 +58,16 @@ innerHtml=`${innerHtml}
   <td>
       <img class="profile" alt="" src="${employeePayrollData[i]._profilePic}">
   </td>
-  <td>${employeePayrollData[i]._name}</td>
-  <td>${employeePayrollData[i]._gender}</td>
+  <td>${employeePayrollData[i].name}</td>
+  <td>${employeePayrollData[i].gender}</td>
   <td>
-   ${getDeptHtml(employeePayrollData[i]._department)}
+   ${getDeptHtml(employeePayrollData[i].department)}
   </td>
-  <td>${employeePayrollData[i]._salary}</td>
-  <td>${employeePayrollData[i]._startDate}</td>
+  <td>${employeePayrollData[i].salary}</td>
+  <td>${employeePayrollData[i].startDate}</td>
   <td>
-      <img id="${employeePayrollData[i]._name}" src="../assets/icons/delete-black-18dp.svg" alt="delete" id="icon">
-      <img id="${employeePayrollData[i]._name}" src="../assets/icons/create-black-18dp.svg" alt="create" id="icon">
+      <img id="${employeePayrollData[i].name}" src="../assets/icons/delete-black-18dp.svg" alt="delete" id="icon">
+      <img id="${employeePayrollData[i].name}" src="../assets/icons/create-black-18dp.svg" alt="create" id="icon">
   </td>
 </tr>
   `;
@@ -86,7 +86,7 @@ const createEmployeePayrollJSON = () => {
           _salary: 700000,
           _startDate: '28-Sept-2021',
           _note: '',
-          _id: new Date().getTime(),
+          id: new Date().getTime(),
           _profilePic: '../assets/profile-images/Ellipse -7.png'
       },
       {
@@ -96,7 +96,7 @@ const createEmployeePayrollJSON = () => {
           _salary: 650000,
           _startDate: '20-Feb-2021',
           _note: '',
-          _id: new Date().getTime(),
+          id: new Date().getTime(),
           _profilePic: '../assets/profile-images/Ellipse -5.png'
       }
   ];
@@ -123,18 +123,18 @@ InjectFRomLOcalStorage = () => {
 innerHtml=`${innerHtml}
 <tr>
   <td>
-      <img class="profile" alt="" src="${employeeList[i]._profilePic}">
+      <img class="profile" alt="" src="${employeeList[i].profilePic}">
   </td>
-  <td>${employeeList[i]._name}</td>
-  <td>${employeeList[i]._gender}</td>
+  <td>${employeeList[i].name}</td>
+  <td>${employeeList[i].gender}</td>
   <td>
-   ${getDeptHtml(employeeList[i]._department)}
+   ${getDeptHtml(employeeList[i].department)}
   </td>
-  <td>${employeeList[i]._salary}</td>
-  <td>${stringifyDate(employeeList[i]._startDate)}</td>
+  <td>${employeeList[i].salary}</td>
+  <td>${stringifyDate(employeeList[i].startDate)}</td>
   <td>
-      <img id="${employeeList[i]._id}" src="../assets/icons/delete-black-18dp.svg" onclick="remove(this)" alt="delete" id="icon"/>
-      <img id="${employeeList[i]._id}" src="../assets/icons/create-black-18dp.svg" onclick="edit(this) "alt="create" id="icon"/>
+      <img id="${employeeList[i].id}" src="../assets/icons/delete-black-18dp.svg" onclick="remove(this)" alt="delete" id="icon"/>
+      <img id="${employeeList[i].id}" src="../assets/icons/create-black-18dp.svg" onclick="edit(this) "alt="create" id="icon"/>
   </td>
 </tr>
   `;
@@ -152,9 +152,9 @@ const getEmployeePayrollFromLocalStorage=()=>
 //Usecase 7: Remove employee from Local Storage
 const remove= (node) =>
 {
-  let employeePayrollData=employeeList.find(empData => empData._id == node.id);
+  let employeePayrollData=employeeList.find(empData => empData.id == node.id);
   if(!employeePayrollData) return ;
-  const index= employeeList.indexOf(empdata => empdata._id == employeePayrollData._id);
+  const index= employeeList.indexOf(empdata => empdata.id == employeePayrollData.id);
   employeeList.splice(index,1);
   localStorage.setItem("EmployeePayrollList",JSON.stringify(employeeList));
   document.querySelector(".emp-count").textContent=employeeList.length;
@@ -164,7 +164,7 @@ const remove= (node) =>
 //Usecase 8: Ability to Update an Employee Payroll details.
 const edit= (node) =>
 {
-  let employeePayrollData=employeeList.find(empData => empData._id== node.id);
+  let employeePayrollData=employeeList.find(empData => empData.id== node.id);
      alert("Redirecting ..");
      localStorage.setItem("editEmp",JSON.stringify(employeePayrollData));  
      window.location.replace(site_properties.add_emp_payroll_page);

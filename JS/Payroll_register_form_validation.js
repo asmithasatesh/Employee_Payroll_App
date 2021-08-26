@@ -18,28 +18,34 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const texterror=document.querySelector('.text-error');
     text.addEventListener('input',function()
     {
-    let nameRegex=RegExp('^[A-Z]{1}[a-z]{2,}([\\s]?[A-Za-z]{1,})*$');
-    if(nameRegex.test(text.value))
+    if(text.value.length == 0)
     {
-        texterror.textContent="";
+        setTextValue('.text-error',"");
+        return;
     }
-    else
-    {
-        texterror.textContent="Name is Incorrect"
-    }
+   try{
+     checkName(text.value);
+     setTextValue('.text-error',"");
+   }
+   catch(e)
+   {
+     setTextValue('.text-error',e)
+   }
     });
 
     //validates the date
     const date = document.querySelector('#date');
     date.addEventListener('input',function(){
-        let startDate = getInputValueById('#day')+" "+getInputValueById('#month')+" "+getInputValueById('#year');
-        try{
-            (new EmployeePayrollData()).startDate = new Date(Date.parse(startDate));
-            setTextValue(".dateerror","");
+
+         try{
+          let startDate = getInputValueById('#day')+" "+getInputValueById('#month')+" "+getInputValueById('#year');
+          checkStartDate(new Date(Date.parse(startDate)));
+        setTextValue(".dateerror","");
         }catch(e){
             setTextValue(".dateerror",e);
         }
-    })
+    });
+
     checkForUpdate();
    });
 
@@ -173,14 +179,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
    //Usecase 8: HOME Ability to Update an Employee Payroll details.
   const setForm= () =>
     {
-      setValue('#name',empJsonObj._name);
-      setSelectedValues('[name=profile]',empJsonObj._profilePic);
-      setSelectedValues('[name=gender]',empJsonObj._gender);
-      setSelectedValues('[name=department]',empJsonObj._department);
-      setValue('#salary',empJsonObj._salary);
-      setTextValue('.salary-output',empJsonObj._salary);
-      setValue('#notes',empJsonObj._notes);
-      let date= stringifyDate(empJsonObj._startDate).split(" ");
+      setValue('#name',empJsonObj.name);
+      setSelectedValues('[name=profile]',empJsonObj.profilePic);
+      setSelectedValues('[name=gender]',empJsonObj.gender);
+      setSelectedValues('[name=department]',empJsonObj.department);
+      setValue('#salary',empJsonObj.salary);
+      setTextValue('.salary-output',empJsonObj.salary);
+      setValue('#notes',empJsonObj.notes);
+      let date= stringifyDate(empJsonObj.startDate).split(" ");
       setValue('#day',date[0]);
       setValue('#month',date[1]);
       setValue('#year',date[2]);
@@ -217,6 +223,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       //Storing Data on global Object
    const setEmployeePayrollObject=() =>
    {
+     if(!isUpdate) empJsonObj.id=createNewID();
     empJsonObj.name=getInputValueById("#name");
     empJsonObj.profilePic=getSelectedValues('[name=profile]').pop();
     empJsonObj.gender=getSelectedValues('[name=gender]').pop();
@@ -245,19 +252,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
     if(employeePayrollList)
     {
       let empayrollData= employeePayrollList
-      .find(empData => empData._id == empJsonObj._id);
+      .find(empData => empData.id == empJsonObj.id);
       if(!empayrollData)
       {
-        employeePayrollList.push(createEmployeePayrollData());
+        employeePayrollList.push(empJsonObj);
       }
       else{
-        const index= employeePayrollList.map(empData => empData._id)
-        .indexOf(empayrollData._id);
-        employeePayrollList.splice(index,1,createEmployeePayrollData(empayrollData._id));
+        const index= employeePayrollList.map(empData => empData.id)
+        .indexOf(empayrollData.id);
+        employeePayrollList.splice(index,1,empJsonObj);
       }
     }
     else{
-      employeePayrollList=[createEmployeePayrollData()]
+      employeePayrollList=[empJsonObj]
     }
     localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
    }
@@ -265,7 +272,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     createEmployeePayrollData=(id) =>
     {
       let employeedata= new EmployeePayrollData();
-      if(!id) employeedata._id=createNewID();
+      if(!id) employeedata.id=createNewID();
       else employeedata.id=id;
       setEmployeePayrollData(employeedata);
       return employeedata;
