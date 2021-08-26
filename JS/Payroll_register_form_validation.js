@@ -261,51 +261,49 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
     localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
    }
+    //Check whether ID exist
+    createEmployeePayrollData=(id) =>
+    {
+      let employeedata= new EmployeePayrollData();
+      if(!id) employeedata._id=createNewID();
+      else employeedata.id=id;
+      setEmployeePayrollData(employeedata);
+      return employeedata;
+    }
 
+    //Create new ID and maintaing current id in Local Storage
+    createNewID=()=>
+    {
+      let empID=localStorage.getItem("CurrentEmployeeID");
+      empID=!empID? 1: (parseInt(empID)+1).toString();
+      localStorage.setItem("CurrentEmployeeID",empID);
+      return empID;
+    }
+     //Assigning data from Json Object
+     setEmployeePayrollData=(employeePayrollData) =>
+     {
+   try
+   {
+     employeePayrollData.name=empJsonObj.name;
+   }
+   catch(e)
+   {
+     setTextValue(".text-error",e);
+   }
 
-     //Check whether ID exist
-      createEmployeePayrollData=(id) =>
-      {
-        let employeedata= new EmployeePayrollData();
-        if(!id) employeedata._id=createNewID();
-        else employeedata.id=id;
-        setEmployeePayrollData(employeedata);
-        return employeedata;
-      }
-
-      //Create new ID and maintaing current id in Local Storage
-      createNewID=()=>
-      {
-        let empID=localStorage.getItem("CurrentEmployeeID");
-        empID=!empID? 1: (parseInt(empID)+1).toString();
-        localStorage.setItem("CurrentEmployeeID",empID);
-        return empID;
-      }
-       //Assigning data from Json Object
-       setEmployeePayrollData=(employeePayrollData) =>
-       {
-     try
-     {
-       employeePayrollData.name=empJsonObj.name;
-     }
-     catch(e)
-     {
-       setTextValue(".text-error",e);
-     }
-
-     employeePayrollData.profilePic=empJsonObj.profilePic;
-     employeePayrollData.gender=empJsonObj.gender;
-     employeePayrollData.department=empJsonObj.department;
-     employeePayrollData.salary=empJsonObj.salary;
-     employeePayrollData.notes=empJsonObj.notes;
-     try
-     {
-       employeePayrollData.startDate=empJsonObj.startDate;
-       setTextValue(".dateerror","");
-     }
-     catch(e)
-     {
-       setTextValue(".dateerror",e);
-     }
-     alert(employeePayrollData.toString());
-     }
+   employeePayrollData.profilePic=empJsonObj.profilePic;
+   employeePayrollData.gender=empJsonObj.gender;
+   employeePayrollData.department=empJsonObj.department;
+   employeePayrollData.salary=empJsonObj.salary;
+   employeePayrollData.notes=empJsonObj.notes;
+   try
+   {
+     employeePayrollData.startDate=empJsonObj.startDate;
+     setTextValue(".dateerror","");
+   }
+   catch(e)
+   {
+     setTextValue(".dateerror",e);
+   }
+   alert(employeePayrollData.toString());
+   }
