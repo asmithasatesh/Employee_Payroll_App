@@ -165,7 +165,8 @@ const remove= (node) =>
 {
   let employeePayrollData=employeeList.find(empData => empData.id == node.id);
   if(!employeePayrollData) return ;
-  const index= employeeList.indexOf(empdata => empdata.id == employeePayrollData.id);
+  const index= employeeList.map(empData => empData.id)
+  .indexOf(employeePayrollData.id);
   employeeList.splice(index,1);
   if(site_properties.use_local_storage.match("true"))
   {
