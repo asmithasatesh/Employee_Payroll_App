@@ -167,9 +167,21 @@ const remove= (node) =>
   if(!employeePayrollData) return ;
   const index= employeeList.indexOf(empdata => empdata.id == employeePayrollData.id);
   employeeList.splice(index,1);
-  localStorage.setItem("EmployeePayrollList",JSON.stringify(employeeList));
-  document.querySelector(".emp-count").textContent=employeeList.length;
-  InjectFRomLOcalStorage();
+  if(site_properties.use_local_storage.match("true"))
+  {
+    localStorage.setItem("EmployeePayrollList",JSON.stringify(employeeList));
+    document.querySelector(".emp-count").textContent=employeeList.length;
+    InjectFRomLOcalStorage();
+  }
+  else{
+    const deleteUrl = site_properties.server_url+employeePayrollData.id.toString();
+    makePromiseCall("DELETE",deleteUrl,false).then(responseText=>
+      {
+      InjectFRomLOcalStorage();
+    }).catch(error=>{
+      console.log(JSON.stringify(error));
+    })
+  }
 }
 
 //Usecase 8: Ability to Update an Employee Payroll details.
