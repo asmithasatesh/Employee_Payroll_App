@@ -1,10 +1,21 @@
 var employeeList;
 window.addEventListener('DOMContentLoaded', (event) =>
 {
-  //Usecase 6: Ability to view Employee Payroll details from Local Storage.
+    //createInnerHtml();
+    if(site_properties.use_local_storage.match("true"))
+    {
+        //Usecase 6: Ability to view Employee Payroll details from Local Storage.
     employeeList=getEmployeePayrollFromLocalStorage();
     document.querySelector(".emp-count").textContent = employeeList.length;
     InjectFRomLOcalStorage();
+
+    }
+    else
+    {
+      getEmployeePayrollFromServer();
+    }
+
+
     //Usecase 8: Ability to Update an Employee Payroll details.
     localStorage.removeItem('editEmp');
 
@@ -169,4 +180,17 @@ const edit= (node) =>
      localStorage.setItem("editEmp",JSON.stringify(employeePayrollData));  
      window.location.replace(site_properties.add_emp_payroll_page);
 }
-
+//Usecase 9: Retrieve the Employee Payroll data from the JSON Server instead of Local Storage.
+const getEmployeePayrollFromServer=()=>{
+  makePromiseCall("GET",site_properties.server_url,true).
+  then(responseText=>{
+    employeeList = JSON.parse(responseText);
+    document.querySelector(".emp-count").textContent=employeeList.length;
+    InjectFRomLOcalStorage();
+  }).catch(error=>{
+    console.log("Get error Status: "+JSON.stringify(error));
+    employeeList=[];
+    document.querySelector(".emp-count").textContent=employeeList.length;
+    InjectFRomLOcalStorage();
+  })
+}

@@ -220,7 +220,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
       }
 
-      //Storing Data on global Object
+    //Storing Data on global Object
    const setEmployeePayrollObject=() =>
    {
      if(!isUpdate) empJsonObj.id=createNewID();
@@ -286,31 +286,32 @@ window.addEventListener("DOMContentLoaded", (event) => {
       localStorage.setItem("CurrentEmployeeID",empID);
       return empID;
     }
+
      //Assigning data from Json Object
      setEmployeePayrollData=(employeePayrollData) =>
      {
-   try
-   {
-     employeePayrollData.name=empJsonObj.name;
-   }
-   catch(e)
-   {
-     setTextValue(".text-error",e);
-   }
+      try
+      {
+        employeePayrollData.name=empJsonObj.name;
+      }
+      catch(e)
+      {
+        setTextValue(".text-error",e);
+      }
 
-   employeePayrollData.profilePic=empJsonObj.profilePic;
-   employeePayrollData.gender=empJsonObj.gender;
-   employeePayrollData.department=empJsonObj.department;
-   employeePayrollData.salary=empJsonObj.salary;
-   employeePayrollData.notes=empJsonObj.notes;
-   try
-   {
-     employeePayrollData.startDate=empJsonObj.startDate;
-     setTextValue(".dateerror","");
-   }
-   catch(e)
-   {
-     setTextValue(".dateerror",e);
-   }
-   alert(employeePayrollData.toString());
-   }
+      employeePayrollData.profilePic=empJsonObj.profilePic;
+      employeePayrollData.gender=empJsonObj.gender;
+      employeePayrollData.department=empJsonObj.department;
+      employeePayrollData.salary=empJsonObj.salary;
+      employeePayrollData.notes=empJsonObj.notes;
+      try
+      {
+        employeePayrollData.startDate=empJsonObj.startDate;
+        setTextValue(".dateerror","");
+      }
+      catch(e)
+      {
+        setTextValue(".dateerror",e);
+      }
+      alert(employeePayrollData.toString());
+    }
