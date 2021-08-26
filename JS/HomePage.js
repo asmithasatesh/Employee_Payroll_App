@@ -142,6 +142,7 @@ innerHtml=`${innerHtml}
     
   document.querySelector('#display-table').innerHTML = innerHtml;
 }
+
 //Usecase 6: Get data from Local Storage
 const getEmployeePayrollFromLocalStorage=()=>
 {

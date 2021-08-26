@@ -200,10 +200,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
     //Usecase 9: HOME Ability to Save Updated Employee Payroll into Local Storage.
       const onsave= (event) =>
       {
+        event.preventDefault();
+        event.stopPropagation();
         try{
           setEmployeePayrollObject();
           createAndUpdateStorages();
           resetForm();
+          window.location.replace(site_properties.home_page);
         }
         catch(e)
         {
