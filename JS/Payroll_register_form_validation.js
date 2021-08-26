@@ -226,7 +226,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
       }
 
-    //Usecase 25: Create or Update the json server
+    //Usecase 9: Create or Update the json server
     const createorUpdateJsonServer=()=>{
       let postUrl = site_properties.server_url;
       let methodType = "POST";
@@ -236,7 +236,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
       }
       makePromiseCall(methodType,postUrl,true,empJsonObj).then
       (responseText=>{
-
       }).catch(error=>{
         throw error;
       })
@@ -244,7 +243,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     //Storing Data on global Object
    const setEmployeePayrollObject=() =>
    {
-     if(!isUpdate) empJsonObj.id=createNewID();
+     if(!isUpdate && site_properties.use_local_storage == "true") empJsonObj.id=createNewID();
     empJsonObj.name=getInputValueById("#name");
     empJsonObj.profilePic=getSelectedValues('[name=profile]').pop();
     empJsonObj.gender=getSelectedValues('[name=gender]').pop();
